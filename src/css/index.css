@@ -73,7 +73,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #fefefe;
   gap: 1rem;
   padding: 4rem;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
   border-radius: 0.5rem;
 }
@@ -85,6 +85,13 @@ select {
   border-radius: 0.5rem;
   border: 1px solid #7c6fe023;
   font-size: 1.6rem;
+  
+  transition: background-color 0.2s ease; /* Add transition for hover effect */
+}
+
+select:hover {
+  cursor: pointer;
+  background-color: #f8f7fc; /* Change background color on hover */
 }
 
 textarea {
@@ -102,20 +109,23 @@ textarea {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   border: none;
-  background: linear-gradient(45deg, #34ddaa, #20d5aa);
+  background: linear-gradient(45deg, #1ab477, #30e6bb);
   color: #fff;
   font-weight: 600;
   font-size: 1.6rem;
   cursor: pointer;
-  transition: transform 0.2s ease;
+
+  background-size: 400% 400%;
+  transition: background-position 0.5s, transform 0.2s ease;
 }
 
 .generator__button:hover {
-  transform: scale(1.03);
+  transform: translate(0, -2px);
+  background-position: right bottom;
 }
 
 .generator__button:active {
-  transform: translateY(2px);
+  transform: translate(0, 0);
 }
 
 /*----- OUTPUT BOX ------*/
@@ -124,7 +134,7 @@ textarea {
   margin-bottom: 2rem;
   border-radius: 0.5rem;
   background-color: #fefefe;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.04);
 }
 
 .generator__title-wrapper {
@@ -146,11 +156,11 @@ textarea {
 }
 
 .generator__copy-button:hover {
-  transform: scale(1.03);
+  transform: translate(0, -1px);
 }
 
 .generator__copy-button:active {
-  transform: translateY(2px);
+  transform: translate(0, 0);
 }
 
 .generator__code-item--placeholder {
@@ -166,5 +176,5 @@ textarea {
   padding: 4rem;
   margin-bottom: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.03);
 }
