@@ -55,6 +55,7 @@ const Form = () => {
           .replace(/&/g, " AND ")
           .replace(/ñ/g, "n")
           .replace(/Ñ/g, "N")
+          .replace(/O'(\w)/g, "O $1")
           .replace(/[^a-zA-Z0-9 ]/g, "")
           .replace(/ +/g, " ")
           .replace(/ /g, "_")
