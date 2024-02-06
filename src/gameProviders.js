@@ -55,10 +55,10 @@ const gameProviders = {
 
 const specialGameProviders = {
   Amatic: "AMATIC",
-  Microgaming: "MGS",
   Booming: "BOOMING",
-  Edict: "EDICT",
   EGT: "EGT",
+  Microgaming: "MGS",
+  Edict: "EDICT",
   Fazi: "FAZI",
   GameArt: "GART",
   Realistic: "REALISTIC",

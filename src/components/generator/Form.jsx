@@ -90,7 +90,7 @@ const Form = () => {
 
     // check if any game codes are too long
     gameCodes.forEach((code) => {
-      if (code.length >= 50) {
+      if (code?.length >= 50) {
         newGameCodeTooLong.push(code);
       } else {
         newGameCodes.push(code);
