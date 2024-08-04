@@ -3,12 +3,74 @@ import { gameProviders, specialGameProviders } from "../../gameProviders";
 import Output from "./Output";
 import OutputBad from "./OutputBad";
 
+// Common replacements for special characters
+const replacements = {
+  ä: "a",
+  á: "a",
+  Á: "A",
+  à: "a",
+  À: "A",
+  â: "a",
+  Â: "A",
+  æ: "ae",
+  Æ: "AE",
+  ç: "c",
+  Ç: "C",
+  é: "e",
+  É: "E",
+  è: "e",
+  È: "E",
+  ê: "e",
+  Ê: "E",
+  ë: "e",
+  Ë: "E",
+  í: "i",
+  Í: "I",
+  ì: "i",
+  Ì: "I",
+  î: "i",
+  Î: "I",
+  ï: "i",
+  Ï: "I",
+  ó: "o",
+  Ó: "O",
+  ò: "o",
+  Ò: "O",
+  ô: "o",
+  Ô: "O",
+  ö: "o",
+  Ö: "O",
+  ø: "o",
+  Ø: "O",
+  õ: "o",
+  Õ: "O",
+  œ: "oe",
+  Œ: "OE",
+  ú: "u",
+  Ú: "U",
+  ù: "u",
+  Ù: "U",
+  û: "u",
+  Û: "U",
+  ü: "u",
+  Ü: "U",
+  ñ: "n",
+  Ñ: "N",
+  ý: "y",
+  Ý: "Y",
+  ÿ: "y",
+  Ÿ: "Y",
+  ß: "ss",
+};
+
 const Form = () => {
   const [selectedProvider, setSelectedProvider] = useState("");
   const [gameNames, setGameNames] = useState("");
   const [gameCodes, setGameCodes] = useState([]);
   const [providerError, setProviderError] = useState(false);
   const [gameCodeTooLong, setGameCodeTooLong] = useState([]);
+
+  const [turboMode, setTurboMode] = useState(false);
 
   const handleProviderChange = (event) => {
     setSelectedProvider(event.target.value);
@@ -40,22 +102,27 @@ const Form = () => {
     // loop over unique game names and manipulate the name to create the game code
 
     const gameCodes = games.flatMap((game) => {
-      let gameName;
+      let normalizedGameName = game;
 
+      Object.entries(replacements).forEach(([key, value]) => {
+        const regex = new RegExp(key, "g");
+        normalizedGameName = normalizedGameName.replace(regex, value);
+      });
+
+      let gameName;
       if (selectedProvider === specialGameProviders.Amatic) {
-        gameName = game
+        gameName = normalizedGameName
           .replace(/&/g, " AND ")
-          .replace(/ñ/g, "n")
-          .replace(/Ñ/g, "N")
           .replace(/[^a-zA-Z0-9 ]/g, "")
           .replace(/ +/g, "")
           .toLowerCase();
       } else {
-        gameName = game
+        gameName = normalizedGameName
           .replace(/&/g, " AND ")
-          .replace(/ñ/g, "n")
-          .replace(/Ñ/g, "N")
           .replace(/O'(\w)/g, "O $1")
+          .replace(/'s/g, "s")
+          .replace(/'(?=\S)/g, " ")
+          .replace(/-/g, " ")
           .replace(/[^a-zA-Z0-9 ]/g, "")
           .replace(/ +/g, " ")
           .replace(/ /g, "_")
