@@ -70,8 +70,6 @@ const Form = () => {
   const [providerError, setProviderError] = useState(false);
   const [gameCodeTooLong, setGameCodeTooLong] = useState([]);
 
-  const [turboMode, setTurboMode] = useState(false);
-
   const handleProviderChange = (event) => {
     setSelectedProvider(event.target.value);
     setProviderError(false);
