@@ -7,6 +7,7 @@ const gameProviders = {
   "Big Time Gaming": "BTG",
   BGaming: "BGM",
   Blueprint: "BP",
+  "Bombay Live": "BMB",
   Booming: "BOOMING",
   "Casino Technology": "CT",
   Edict: "EDICT",
