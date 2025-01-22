@@ -98,7 +98,6 @@ const Form = () => {
     ];
 
     // loop over unique game names and manipulate the name to create the game code
-
     const gameCodes = games.flatMap((game) => {
       let normalizedGameName = game;
 

@@ -74,7 +74,6 @@ const gameProviders = {
 
 const specialGameProviders = {
   Amatic: "AMATIC",
-  Booming: "BOOMING",
   EGT: "EGT",
   Microgaming: "MGS",
   Fazi: "FAZI",
