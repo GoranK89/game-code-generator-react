@@ -19,6 +19,7 @@ const gameProviders = {
   "EGT Digital": "EDIG",
   Elk: "ELK",
   Endorphina: "ENDOR",
+  Eyecon: "EYE",
   Evolution: "EVOLD",
   Evona: "EVN",
   Evoplay: "EVP",
@@ -75,6 +76,7 @@ const gameProviders = {
 const specialGameProviders = {
   Amatic: "AMATIC",
   EGT: "EGT",
+  Eyecon: "EYE",
   Microgaming: "MGS",
   Fazi: "FAZI",
   GameArt: "GART",
