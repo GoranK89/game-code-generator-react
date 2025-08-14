@@ -1,5 +1,6 @@
 const gameProviders = {
   "1x2 Gaming": "G1X2",
+  "4leaf": "FOL",
   Adell: "ADE",
   Amatic: "AMATIC",
   "Amusnet Interactive": "EGT",
