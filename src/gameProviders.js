@@ -48,6 +48,7 @@ const gameProviders = {
   Octoplay: "OP",
   OneTouch: "ONT",
   Ortiz: "ORTIZ",
+  Pateplay: "PATE",
   Platipus: "PTP",
   Playngo: "PNG",
   Playson: "PLS",
