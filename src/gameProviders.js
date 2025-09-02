@@ -68,6 +68,7 @@ const gameProviders = {
   "Stakelogic LIVE": "STK2",
   Synot: "SYN",
   Swintt: "STT",
+  TaDa: "TD",
   Tech4Bet: "T4B",
   Thunderkick: "THUNDER",
   "Tom Horn": "TOM",
