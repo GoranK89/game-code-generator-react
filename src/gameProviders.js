@@ -1,5 +1,6 @@
 const gameProviders = {
   "1x2 Gaming": "G1X2",
+  "3 Oaks": "OAK",
   "4leaf": "FOL",
   Adell: "ADE",
   Amatic: "AMATIC",
@@ -16,6 +17,7 @@ const gameProviders = {
   "Bombay Live": "BMB",
   Booming: "BOOMING",
   "Casino Technology": "CT",
+  "Degen (Gaming Corps)": "DEGN",
   Edict: "EDICT",
   "E-Gaming": "EGAM",
   "EGT Digital": "EDIG",
