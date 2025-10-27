@@ -2,6 +2,7 @@ const gameProviders = {
   "1x2 Gaming": "G1X2",
   "3 Oaks": "OAK",
   "4leaf": "FOL",
+  "7777 Gaming": "F7",
   Adell: "ADE",
   "Air Dice": "AIRD",
   Amatic: "AMATIC",
