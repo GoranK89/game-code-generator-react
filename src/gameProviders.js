@@ -71,6 +71,8 @@ const gameProviders = {
   Skywind: "SW",
   Slingo: "SLG",
   Spinomenal: "SPN",
+  "Spinomenal2": "SPMN",
+  "Spinomenal2 (retro)": "RETR",
   Stakelogic: "STK",
   "Stakelogic LIVE": "STK2",
   Synot: "SYN",
