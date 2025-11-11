@@ -58,6 +58,7 @@ const gameProviders = {
   Platipus: "PTP",
   Playngo: "PNG",
   Playson: "PLS",
+  "PopOK Gaming": "POP",
   "Power Gaming": "PWG",
   "Pragmatic Play": "PP",
   Push: "PUSH",
