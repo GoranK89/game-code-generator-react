@@ -93,6 +93,7 @@ const gameProviders = {
   "Tom Horn 2": "TH2",
   "Wazdan (direct)": "WZD",
   "Wazdan (RB2)": "WD",
+  "Wildcat Gaming": "WLDC",
   Yggdrasil: "YGG",
   Zitro: "ZITRO",
 };
