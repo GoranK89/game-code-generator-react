@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { gameProviders, specialGameProviders } from "../../gameProviders";
 import Output from "./Output";
 import OutputBad from "./OutputBad";
@@ -69,11 +69,14 @@ const Form = () => {
   const [gameCodes, setGameCodes] = useState([]);
   const [providerError, setProviderError] = useState(false);
   const [gameCodeTooLong, setGameCodeTooLong] = useState([]);
+  const [providerSearch, setProviderSearch] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleProviderChange = (event) => {
-    setSelectedProvider(event.target.value);
-    setProviderError(false);
-  };
+  const inputRef = useRef(null); // NEW: focus management
+
+  const filteredProviders = Object.entries(gameProviders).filter(([name]) =>
+    name.toLowerCase().includes(providerSearch.toLowerCase()),
+  );
 
   const handleGameNamesChange = (event) => {
     setGameNames(event.target.value);
@@ -93,7 +96,7 @@ const Form = () => {
         gameNames
           .split("\n")
           .map((name) => name.trim())
-          .filter((name) => name.length > 0)
+          .filter((name) => name.length > 0),
       ),
     ];
 
@@ -169,17 +172,76 @@ const Form = () => {
   return (
     <div className="form-output-wrapper">
       <form className="generator__form" onSubmit={generateCodes}>
-        <select
-          onChange={handleProviderChange}
-          className={providerError ? "generator__form--error" : ""}
-        >
-          <option value="">Select a game provider</option>
-          {Object.entries(gameProviders).map(([provider, code], index) => (
-            <option key={index} value={code}>
-              {provider}
-            </option>
-          ))}
-        </select>
+        <div className="provider-search-wrapper">
+          <input
+            ref={inputRef}
+            type="text"
+            value={providerSearch}
+            placeholder="Search game provider..."
+            className={`generator__provider-input${providerError ? " generator__form--error" : ""}`}
+            onChange={(e) => {
+              setProviderSearch(e.target.value);
+              setSelectedProvider(""); // clear selection when typing
+              setGameCodes([]);
+              setGameCodeTooLong([]);
+              setShowDropdown(true);
+            }}
+            onFocus={() => setShowDropdown(true)}
+            onBlur={() => setTimeout(() => setShowDropdown(false), 150)} // delay so click registers
+            autoComplete="off"
+          />
+          {providerError && (
+            <span className="provider-error-msg">Please select a provider</span>
+          )}
+          {providerSearch && (
+            <button
+              type="button"
+              className="provider-clear-btn"
+              onClick={() => {
+                setProviderSearch("");
+                setSelectedProvider("");
+                setShowDropdown(false);
+                inputRef.current?.focus();
+              }}
+            >
+              &times;
+            </button>
+          )}
+          {showDropdown && filteredProviders.length > 0 && (
+            <ul className="provider-dropdown">
+              {filteredProviders.map(([name, code]) => {
+                // NEW: highlight matching portion of provider name
+                const lowerName = name.toLowerCase();
+                const lowerSearch = providerSearch.toLowerCase();
+                const matchStart = lowerName.indexOf(lowerSearch);
+                const matchEnd = matchStart + providerSearch.length;
+
+                return (
+                  <li
+                    key={code}
+                    onMouseDown={() => {
+                      setSelectedProvider(code);
+                      setProviderSearch(name);
+                      setProviderError(false);
+                      setShowDropdown(false);
+                    }}
+                  >
+                    {/* bold the matched substring */}
+                    {matchStart >= 0 && providerSearch ? (
+                      <>
+                        {name.slice(0, matchStart)}
+                        <strong>{name.slice(matchStart, matchEnd)}</strong>
+                        {name.slice(matchEnd)}
+                      </>
+                    ) : (
+                      name
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
         <textarea
           rows="8"
           value={gameNames}

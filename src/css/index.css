@@ -66,6 +66,29 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 2rem;
 }
 
+.provider-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.provider-clear-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.provider-clear-btn:hover {
+  color: #555;
+}
+
 .generator__form {
   display: flex;
   flex-direction: column;
@@ -78,20 +101,56 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 0.5rem;
 }
 
-select {
-  font-family: "Roboto", sans-serif;
+.generator__provider-input {
+  font: inherit;
   width: 100%;
   padding: 1rem;
+  padding-right: 3rem;
   border-radius: 0.5rem;
   border: 1px solid #7c6fe023;
   font-size: 1.6rem;
-
-  transition: background-color 0.2s ease; /* Add transition for hover effect */
+  outline: none;
 }
 
-select:hover {
+.generator__provider-input:focus {
+  border-color: #7c6fe0;
+}
+
+.generator__form--error {
+  border-color: #e05555 !important;
+}
+
+.provider-error-msg {
+  display: block;
+  font-size: 1.2rem;
+  color: #e05555;
+  margin-top: 0.3rem;
+}
+
+.provider-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+
+  border-radius: 0 0 0.5rem 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #c4b5f7 transparent;
+}
+.provider-dropdown li {
+  padding: 8px 12px;
   cursor: pointer;
-  background-color: #f8f7fc; /* Change background color on hover */
+}
+.provider-dropdown li:hover {
+  background: #f0f0f0;
 }
 
 textarea {
@@ -116,7 +175,9 @@ textarea {
   cursor: pointer;
 
   background-size: 400% 400%;
-  transition: background-position 0.5s, transform 0.2s ease;
+  transition:
+    background-position 0.5s,
+    transform 0.2s ease;
 }
 
 .generator__button:hover {
@@ -137,10 +198,42 @@ textarea {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.04);
 }
 
+.generator__code-count {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #888;
+}
+
 .generator__title-wrapper {
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
+}
+
+.generator__code-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0;
+}
+
+.generator__copy-single {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: #bbb;
+  padding: 0 0.4rem;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.generator__code-item:hover .generator__copy-single {
+  opacity: 1;
+}
+
+.generator__copy-single:hover {
+  color: #7c6fe0;
 }
 
 /*Button*/
