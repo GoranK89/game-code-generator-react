@@ -61,6 +61,7 @@ const gameProviders = {
   Ortiz: "ORTIZ",
   PascalGaming: "PAS",
   Pateplay: "PATE",
+  PGSoft: "PGS",
   Platipus: "PTP",
   Playngo: "PNG",
   Playson: "PLS",
