@@ -130,17 +130,18 @@ const Form = () => {
       }
 
       // handle special cases
+
       if (selectedProvider === specialGameProviders.Amatic) {
         return [
           `${selectedProvider}_${gameName.toLowerCase()}`,
           `${selectedProvider}M_${gameName.toLowerCase()}`,
         ];
-      } else if (selectedProvider === specialGameProviders.Microgaming) {
+      } /* else if (selectedProvider === specialGameProviders.Microgaming) {
         return [
           `${selectedProvider}D_${gameName.toUpperCase()}`,
           `${selectedProvider}M_${gameName.toUpperCase()}`,
         ];
-      } else if (
+      } */ else if (
         Object.values(specialGameProviders).includes(selectedProvider)
       ) {
         return [
