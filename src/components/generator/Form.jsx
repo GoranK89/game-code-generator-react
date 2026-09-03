@@ -130,6 +130,10 @@ const Form = () => {
       }
 
       // handle special cases
+      if (selectedProvider === "NETEE" && gameName.includes("NO_BONUS_BUY")) {
+        const updatedGameName = gameName.replace("NO_BONUS_BUY", "NBB");
+        return `${selectedProvider}_${updatedGameName}`;
+      }
 
       if (selectedProvider === specialGameProviders.Amatic) {
         return [
